@@ -13,9 +13,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 
+import { ToastContainer } from 'react-toastify';
+
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
+       <ToastContainer position="top-right" autoClose={3000} />
       <div className="px-16">
         <Navbar />
         <hr />

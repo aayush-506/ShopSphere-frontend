@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'; 
 import { assets } from '../assets/frontend_assets/assets';
-import { NavLink } from 'react-router-dom';
+import { Links, NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
+
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -54,8 +55,10 @@ const Navbar = () => {
           {showDropdown && (
             <div className="absolute right-0 top-8 w-40 bg-white shadow-md rounded-md z-50">
               <ul className="text-sm text-zinc-700">
+               <Link to="/login">
+                <li className="px-4 py-2 hover:bg-zinc-100 cursor-pointer">Login</li>
+               </Link>
                 <li className="px-4 py-2 hover:bg-zinc-100 cursor-pointer">Profile</li>
-                <li className="px-4 py-2 hover:bg-zinc-100 cursor-pointer">Settings</li>
                 <li className="px-4 py-2 hover:bg-zinc-100 cursor-pointer">Logout</li>
               </ul>
             </div>
@@ -64,7 +67,9 @@ const Navbar = () => {
 
   
         <div className="h-5 w-5">
+          <Link to="/cart">
           <img className="cursor-pointer" src={assets.cart_icon} alt="Cart" />
+          </Link>
         </div>
       </div>
     </div>
