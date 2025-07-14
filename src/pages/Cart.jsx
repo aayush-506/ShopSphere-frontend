@@ -45,7 +45,7 @@ const updateQuantity = (item, quantity) => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  const total = subtotal + delivery_fee;
+  const total = subtotal ;
 
   return (
     <div className="p-8">
@@ -114,13 +114,7 @@ const updateQuantity = (item, quantity) => {
               {subtotal.toFixed(2)}
             </span>
           </div>
-          <div className="flex justify-between py-2">
-            <span>Shipping</span>
-            <span>
-              {currency}
-              {delivery_fee}
-            </span>
-          </div>
+      
           <div className="flex justify-between font-bold py-2 border-t mt-2">
             <span>Total</span>
             <span>

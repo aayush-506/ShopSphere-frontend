@@ -5,11 +5,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
-  const {
-    cartItems,
-    currency,
-    delivery_fee
-  } = useContext(ShopContext);
+const { setCartItems, currency, delivery_fee, cartTotal } = useContext(ShopContext);
 
   const [form, setForm] = useState({
     firstName: '',
@@ -38,14 +34,12 @@ const handleSubmit = (e) => {
     return;
   }
   toast.success(`Order placed using: ${paymentMethod}`);
-  navigate("/orders")
+    setCartItems([]);
+  navigate("/")
 };
 
 
-const subtotal = cartItems.reduce(
-  (acc, item) => acc + item.new_price * item.quantity,
-  0
-);
+const subtotal = cartTotal
 
   const total = subtotal + delivery_fee;
 
@@ -58,24 +52,30 @@ const subtotal = cartItems.reduce(
         </div>
 
         <div className="flex gap-4">
-          <input name="firstName" placeholder="First name" value={form.firstName} onChange={handleChange} className="w-1/2 border p-2 rounded" />
-          <input name="lastName" placeholder="Last name" value={form.lastName} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="firstName" placeholder="First name" value={form.firstName} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="lastName" placeholder="Last name" value={form.lastName} onChange={handleChange} className="w-1/2 border p-2 rounded" />
         </div>
 
-        <input name="email" placeholder="Email address" value={form.email} onChange={handleChange} className="w-full border p-2 rounded" />
-        <input name="street" placeholder="Street" value={form.street} onChange={handleChange} className="w-full border p-2 rounded" />
+        <input required name="email" placeholder="Email address" value={form.email} onChange={handleChange} className="w-full border p-2 rounded" />
+        <input required name="street" placeholder="Street" value={form.street} onChange={handleChange} className="w-full border p-2 rounded" />
 
         <div className="flex gap-4">
-          <input name="city" placeholder="City" value={form.city} onChange={handleChange} className="w-1/2 border p-2 rounded" />
-          <input name="state" placeholder="State" value={form.state} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="city" placeholder="City" value={form.city} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="state" placeholder="State" value={form.state} onChange={handleChange} className="w-1/2 border p-2 rounded" />
         </div>
 
         <div className="flex gap-4">
-          <input name="zip" placeholder="Zip code" value={form.zip} onChange={handleChange} className="w-1/2 border p-2 rounded" />
-          <input name="country" placeholder="Country" value={form.country} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="zip" placeholder="Zip code" value={form.zip} onChange={handleChange} className="w-1/2 border p-2 rounded" />
+          <input required name="country" placeholder="Country" value={form.country} onChange={handleChange} className="w-1/2 border p-2 rounded" />
         </div>
 
-        <input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} className="w-full border p-2 rounded" />
+        <input required name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} className="w-full border p-2 rounded" />
+              <button
+         type='submit'
+          className="w-full bg-black text-white py-3 rounded hover:opacity-90"
+        >
+          PLACE ORDER
+        </button>
       </form>
 
      
@@ -104,12 +104,12 @@ const subtotal = cartItems.reduce(
             Payment <span className="font-semibold">Method</span>
           </p>
           <div className="flex flex-wrap gap-3">
-            {['Stripe', 'Razorpay', 'Cash on Delivery'].map((method) => (
+            {[ 'Cash on Delivery'].map((method) => (
               <label
                 key={method}
                 className="flex items-center gap-2 border px-4 py-2 rounded cursor-pointer"
               >
-                <input
+                <input required
                   type="radio"
                   name="payment"
                   value={method}
@@ -131,13 +131,9 @@ const subtotal = cartItems.reduce(
             ))}
           </div>
         </div>
+        
 
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-black text-white py-3 rounded hover:opacity-90"
-        >
-          PLACE ORDER
-        </button>
+
       </div>
     </div>
   );

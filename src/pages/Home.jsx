@@ -6,7 +6,7 @@ import { assets } from '../assets/frontend_assets/assets'
 
 const Home = () => {
   return (
-    <div className='px-16'>
+    <div className='px-16 mt-16'>
       <Hero/>
     <LatestCollection/>
     <div className='ml-5 mb-[20vh] mt-[15vh] '>

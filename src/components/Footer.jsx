@@ -12,7 +12,9 @@ const Footer = () => {
             <img className='object-cover h-full w-full' src={assets.logo} alt="" />
           </div>
           <p className='mt-9 text-zinc-600 text-sm leading-6'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, perspiciatis aspernatur amet tenetur expedita...
+            Fast delivery | Secure payments | Easy returns.
+            Shop with confidence every time you visit.
+            Thank you for being a valued customer.
           </p>
         </div>
 
