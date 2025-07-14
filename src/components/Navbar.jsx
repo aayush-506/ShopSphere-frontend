@@ -67,8 +67,10 @@ const Navbar = () => {
                 <Link to="/login">
                   <li className="px-4 py-2 hover:bg-zinc-100 cursor-pointer">Login</li>
                 </Link>
-                <a
+                    <a
                   href={adminUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block px-4 py-2 hover:bg-zinc-100 text-sm text-zinc-700"
                 >
                   Admin
